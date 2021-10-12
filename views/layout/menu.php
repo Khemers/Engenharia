@@ -9,8 +9,8 @@ include_once("header.php")
             <li><a href="">Cadastrar Projetos</a></li>
             <li><a href="">Publicar Projetos</a></li>
             <li><a href="">Gerenciar Projetos</a></li>
-            <li><a href="">Cadastrar Usuários</a></li>
-            <li><a href="">Editar Usuários</a></li>
+            <li><a href="/index.php?action=createUser">Cadastrar Usuários</a></li>
+            <li><a href="/index.php?action=editUser">Editar Usuários</a></li>
             <li><a href="/index.php?action=changePassword">Alterar Senha</a></li>
         </ul>
     </nav>
