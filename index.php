@@ -1,22 +1,22 @@
 <?php
+session_start();
+require_once("./adm/UsuariosDAO.php");
+
 if (isset($_POST['login'])) {
-    $login = $_POST['email'];
-    $password = $_POST['key'];
+    $login = $_POST['name'];
+    $key = $_POST['key'];
 
-    if ($login == 'admin') { // senha: admin
-        if (password_verify($password, '$2y$10$qUYpul9kyWhe6gDLpQ6tg.vBqytjwfOijOqjMuwqusSxtLE..kIZy')) {
-            session_start();
-            //$_SESSION['login'] = $login;
-            header("Location: /views/layout/menu.php");
-        }
-        else {
-            $error = "Senha incorreta";
-        }
-    }
-    else { // login incorreto
-        $error = "Login incorreto";
-    }
+    $obj = new UsuariosDAO();
 
+    $password = $obj->buscar($login)[0]->getSenhaUsuarios();
+
+    if ($key == $password) {
+        $_SESSION['type'] = $obj->buscar($login)[0]->getTipoUsuarios();
+        header("Location: /views/layout/menu.php");
+    }
+    else {
+        $error = "Senha incorreta";
+    }
 }
 ?>
 
@@ -33,7 +33,7 @@ if(isset($_GET['action'])) {
         <form method="post" action="">
             <div class="center">
                 <label>
-                    <input name="email" placeholder="Digite seu e-mail"/>
+                    <input name="name" placeholder="Digite seu nome completo"/>
                 </label>
             </div>
             <div class="center">

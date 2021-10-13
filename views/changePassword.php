@@ -1,5 +1,6 @@
 <?php
-include_once("./views/layout/menu.php")
+include_once("./views/layout/menu.php");
+require_once("./adm/UsuariosDAO.php")
 ?>
 
 <div>

@@ -22,11 +22,11 @@
             }
         }
 
-        public function buscar($ida) {
+        public function buscar($nomeUsuarios) {
             try {
-                $query = $this->conexao->prepare("select * from usuarios where idUsuarios like '$idu'");
+                $query = $this->conexao->prepare("select * from usuarios where nomeUsuarios like '$nomeUsuarios'");
                 $query->execute();
-                return $query->fetchAll(PDO::FETCH_CLASS, "Usuarios")[0];
+                return $query->fetchAll(PDO::FETCH_CLASS, "Usuarios");
             }
             catch(PDOException $e){
                 echo "Erro no acesso aos dados: ". $e->getMessage();
