@@ -18,7 +18,8 @@ create table projetos(
   nomeProjetos VARCHAR(100) NOT NULL,
   statusProjetos BOOLEAN NOT NULL,
   temaProjetos VARCHAR(100) NOT NULL,
-  areaconhecimentoProjetos VARCHAR(100) NOT NULL
+  areaconhecimentoProjetos VARCHAR(100) NOT NULL,
+  participantesProjetos VARCHAR(100) NOT NULL
 );
 
 create table usuarios(
