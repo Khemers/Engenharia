@@ -1,5 +1,17 @@
 <?php
-include_once("./views/layout/menu.php")
+error_reporting(4);
+session_start();
+include_once("./views/layout/menu.php");
+
+if (isset($_POST['apply'])) {
+    $name = $_POST['name'];
+    $type = $_POST['type'];
+    $password = $_POST['key'];
+
+    $obj = new UsuariosDAO();
+    $obj->inserir($name, $type, $password);
+
+}
 ?>
 
 <div>

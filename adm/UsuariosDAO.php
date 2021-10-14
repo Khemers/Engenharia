@@ -44,24 +44,21 @@
                 }
                 $this->alterar($usuario);
             }
-            catch(PDOException $e){
+            catch(PDOException $e) {
                 echo "Erro no acesso aos dados: ". $e->getMessage();
             }
             return null;
         }
 
-        public function inserir(Usuarios $usuarios){
-            try{
-                $query = $this->conexao->prepare("insert into usuarios values (:idu, :nmu, :tpu, :snu)");
-                $query->bindValue(":idu", $usuarios->getIdUsuarios());
-                $query->bindValue(":nmu", $usuarios->getNomeUsuarios());
-                $query->bindValue(":tpu", $usuarios->getTipoUsuarios());
-                $query->bindValue(":snu", $usuarios->getSenhaUsuarios());
+        public function inserir($nome, $tipo, $senha) {
+            try {
+                $query = $this->conexao->prepare("insert into usuarios values (0, '$nome', '$tipo', '$senha')");
                 return $query->execute();
             }
-            catch(PDOException $e){
+            catch(PDOException $e) {
                 echo "Erro no acesso aos dados: ". $e->getMessage();
             }
+            return null;
         }
 
         public function alterar(Usuarios $usuarios){
