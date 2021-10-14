@@ -13,7 +13,7 @@ include_once("./views/layout/menu.php")
         </div>
         <div class="center">
             <label>
-                <input name="email" placeholder="Digite o e-mail"/>
+                <input name="name" placeholder="Digite o nome completo"/>
             </label>
         </div>
         <div class="center">

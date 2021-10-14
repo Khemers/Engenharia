@@ -6,7 +6,7 @@ include_once("./views/layout/menu.php")
     <form method="post" action="">
         <div class="center">
             <label>
-                <input name="email" placeholder="Digite o e-mail do usuário"/>
+                <input name="name" placeholder="Digite o nome completo"/>
             </label>
         </div>
         <div class="center">

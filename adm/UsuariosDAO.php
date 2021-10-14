@@ -34,6 +34,22 @@
         return null;
         }
 
+        public function alterarSenha($nomeUsuario, $senha, $novaSenha) {
+            try {
+                $query = $this->conexao->prepare("select * from usuarios where nomeUsuarios like '$nomeUsuario'");
+                $query->execute();
+                $usuario = $query->fetchAll(PDO::FETCH_CLASS, "Usuarios")[0];
+                if ($usuario->getSenhaUsuarios() == $senha) {
+                    $usuario->setSenhaUsuarios($novaSenha);
+                }
+                $this->alterar($usuario);
+            }
+            catch(PDOException $e){
+                echo "Erro no acesso aos dados: ". $e->getMessage();
+            }
+            return null;
+        }
+
         public function inserir(Usuarios $usuarios){
             try{
                 $query = $this->conexao->prepare("insert into usuarios values (:idu, :nmu, :tpu, :snu)");

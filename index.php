@@ -1,4 +1,5 @@
 <?php
+error_reporting(4);
 session_start();
 require_once("./adm/UsuariosDAO.php");
 
@@ -12,6 +13,7 @@ if (isset($_POST['login'])) {
 
     if ($key == $password) {
         $_SESSION['type'] = $obj->buscar($login)[0]->getTipoUsuarios();
+        $_SESSION['login'] = $obj->buscar($login)[0]->getNomeUsuarios();
         header("Location: /views/layout/menu.php");
     }
     else {

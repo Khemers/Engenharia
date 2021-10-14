@@ -8,7 +8,7 @@ include_once("header.php")
     <nav>
         <ul>
             <?php
-            if ($_SESSION['type'] == '0') {
+            if ($_SESSION['type'] == '0' or $_SESSION['type'] == '1' or $_SESSION['type'] == '2') {
             ?>
             <li><a href="">Visualizar Projetos</a></li>
                 <?php
@@ -50,7 +50,7 @@ include_once("header.php")
             }
             ?>
             <?php
-            if ($_SESSION['type'] == '0') {
+            if ($_SESSION['type'] == '0' or $_SESSION['type'] == '1' or $_SESSION['type'] == '2') {
             ?>
             <li><a href="/index.php?action=changePassword">Alterar Senha</a></li>
                 <?php
