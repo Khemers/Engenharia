@@ -24,7 +24,7 @@
 
         public function buscar($ida) {
             try {
-                $query = $this->conexao->prepare("select * from participantes where idParticipantes like '$idp'");
+                $query = $this->conexao->prepare("select * from participantes where idParticipantes like '$ida'");
                 $query->execute();
                 return $query->fetchAll(PDO::FETCH_CLASS, "Participantes")[0];
             }
@@ -34,17 +34,15 @@
         return null;
         }
 
-        public function inserir(Participantes $participantes){
-            try{
-                $query = $this->conexao->prepare("insert into participantes values (:idp, :nmp, :pjp)");
-                $query->bindValue(":idp", $participantes->getIdParticipantes());
-                $query->bindValue(":nmp", $participantes->getNomeParticipantes());
-                $query->bindValue(":pjp", $participantes->getProjetoParticipantes());
+        public function inserir($nome, $projeto) {
+            try {
+                $query = $this->conexao->prepare("insert into participantes values ('$nome', '$projeto')");
                 return $query->execute();
             }
-            catch(PDOException $e){
+            catch(PDOException $e) {
                 echo "Erro no acesso aos dados: ". $e->getMessage();
             }
+            return null;
         }
 
         public function alterar(Participantes $participantes){

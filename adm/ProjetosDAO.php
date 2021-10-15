@@ -34,21 +34,15 @@
         return null;
         }
 
-        public function inserir(Projetos $projetos){
-            try{
-                $query = $this->conexao->prepare("insert into projetos values (:idpj, :prpj, :nmpj, :stpj, :tmpj, :acpj, :ptpj)");
-                $query->bindValue(":idpj", $projetos->getIdProjetos());
-                $query->bindValue(":prpj", $projetos->getProfessorProjetos());
-                $query->bindValue(":nmpj", $projetos->getNomeProjetos());
-                $query->bindValue(":stpj", $projetos->getStatusProjetos());
-                $query->bindValue(":tmpj", $projetos->getTemaProjetos());
-                $query->bindValue(":acpj", $projetos->getAreaconhecimentoProjeto());
-                $query->bindValue(":ptpj", $projetos->getParticipantesProjetos());
+        public function inserir($professor, $nome, $status, $tema, $area) {
+            try {
+                $query = $this->conexao->prepare("insert into projetos values (0, '$professor', '$nome', '$status', '$tema', '$area', '.')");
                 return $query->execute();
             }
-            catch(PDOException $e){
+            catch(PDOException $e) {
                 echo "Erro no acesso aos dados: ". $e->getMessage();
             }
+            return null;
         }
 
         public function alterar(Projetos $projetos){

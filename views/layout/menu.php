@@ -10,14 +10,14 @@ include_once("header.php")
             <?php
             if ($_SESSION['type'] == '0' or $_SESSION['type'] == '1' or $_SESSION['type'] == '2') {
             ?>
-            <li><a href="">Visualizar Projetos</a></li>
+            <li><a href="/index.php?action=visualizarProjetos">Visualizar Projetos</a></li>
                 <?php
             }
             ?>
             <?php
             if ($_SESSION['type'] == '1') {
             ?>
-            <li><a href="">Cadastrar Projetos</a></li>
+            <li><a href="/index.php?action=cadastrarProjetos">Cadastrar Projetos</a></li>
                 <?php
             }
             ?>
@@ -31,7 +31,7 @@ include_once("header.php")
             <?php
             if ($_SESSION['type'] == '1') {
             ?>
-            <li><a href="">Gerenciar Projetos</a></li>
+            <li><a href="/index.php?action=editarProjetos">Gerenciar Projetos</a></li>
                 <?php
             }
             ?>
@@ -45,7 +45,7 @@ include_once("header.php")
             <?php
             if ($_SESSION['type'] == '2') {
             ?>
-            <li><a href="/index.php?action=editUser">Editar Usuários</a></li>
+            <li><a href="/index.php?action=editUser">Gerenciar Usuários</a></li>
                 <?php
             }
             ?>

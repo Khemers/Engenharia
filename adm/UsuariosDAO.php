@@ -50,6 +50,22 @@
             return null;
         }
 
+        public function alterarConta($nome, $novoNome, $senha) {
+            try {
+                $query = $this->conexao->prepare("select * from usuarios where nomeUsuarios like '$nome'");
+                $query->execute();
+                $usuario = $query->fetchAll(PDO::FETCH_CLASS, "Usuarios")[0];
+
+                $usuario->setNomeUsuarios($novoNome);
+                $usuario->setSenhaUsuarios($senha);
+                $this->alterar($usuario);
+            }
+            catch(PDOException $e) {
+                echo "Erro no acesso aos dados: ". $e->getMessage();
+            }
+            return null;
+        }
+
         public function inserir($nome, $tipo, $senha) {
             try {
                 $query = $this->conexao->prepare("insert into usuarios values (0, '$nome', '$tipo', '$senha')");
@@ -61,8 +77,8 @@
             return null;
         }
 
-        public function alterar(Usuarios $usuarios){
-            try{
+        public function alterar(Usuarios $usuarios) {
+            try {
                 $query = $this->conexao->prepare("update Usuarios set nomeUsuarios = :nmu, tipoUsuarios = :tpu, senhaUsuarios = :snu where idUsuarios = :idu");
                 $query->bindValue(":idu", $usuarios->getIdUsuarios());
                 $query->bindValue(":nmu", $usuarios->getNomeUsuarios());
@@ -70,9 +86,10 @@
                 $query->bindValue(":snu", $usuarios->getSenhaUsuarios());
                 return $query->execute();
             }
-            catch(PDOException $e){
+            catch(PDOException $e) {
                 echo "Erro no acesso aos dados: ". $e->getMessage();
             }
+            return null;
         }
 
         public function excluir($idUsuarios){
